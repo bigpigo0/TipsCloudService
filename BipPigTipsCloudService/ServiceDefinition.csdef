@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="BipPigTipsCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+  <WorkerRole name="WcfWorkerRole" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+    </ConfigurationSettings>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
+    </Imports>
+    <Endpoints>
+      <InputEndpoint name="httpIn" protocol="http" port="9002" />
+    </Endpoints>
+    <LocalResources>
+      <LocalStorage name="DiagnosticStore" cleanOnRoleRecycle="false" sizeInMB="8192" />
+      <LocalStorage name="CustomLogs" cleanOnRoleRecycle="false" sizeInMB="1024" />
+    </LocalResources>
+    <Runtime executionContext="elevated" />
+  </WorkerRole>
+</ServiceDefinition>
